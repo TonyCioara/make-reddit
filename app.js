@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const mongoose = require('mongoose');
+const expressValidator = require('express-validator');
+
+// Set db
+require('./data/reddit-clone-db');
 
 const app = express();
 
@@ -13,6 +16,7 @@ const postRouter = require('./controllers/posts.js');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(expressValidator());
 app.use(express.static('public'));
 
 app.use('/', indexRouter);
