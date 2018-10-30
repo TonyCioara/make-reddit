@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 
 // Set db
-require('./data/reddit-clone-db');
+require('./data/reddit-db');
 
 const app = express();
 
