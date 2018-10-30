@@ -8,6 +8,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
     url,
     { useNewUrlParser: true },
+    { useMongoClient: true },
     function(err, db) {
         assert.equal(null, err);
         console.log('Connected succesfully to DB');
