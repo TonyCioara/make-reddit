@@ -12,6 +12,7 @@ const PORT = process.env.process || 3000;
 
 const indexRouter = require('./controllers/index.js');
 const postRouter = require('./controllers/posts.js');
+const subredditRouter = require('./controllers/subreddits');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -21,6 +22,7 @@ app.use(express.static('public'));
 
 app.use('/', indexRouter);
 app.use('/posts', postRouter);
+app.use('/r', subredditRouter);
 
 app.listen(PORT, function() {
     console.log('Express server listening on port: ', PORT);
