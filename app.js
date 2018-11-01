@@ -6,6 +6,8 @@ const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 const cookieParser = require('cookie-parser');
 
+const checkAuth = require('./utils/checkAuth.js');
+
 // Set db
 require('./data/reddit-db');
 
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator());
 app.use(express.static('public'));
 app.use(cookieParser());
+
+app.use(checkAuth);
 
 app.use('/', indexRouter);
 app.use('/posts', postRouter);

@@ -4,10 +4,11 @@ const router = Router();
 const Post = require('../models/post');
 
 router.get('/', (req, res) => {
-    console.log("COOKIES: ", req.cookies);
+    const currentUser = req.user;
+
     Post.find({})
     .then(posts => {
-        res.render("posts-index", { posts });
+        res.render("posts-index", { posts, currentUser });
     })
     .catch(err => {
         console.log(err.message);

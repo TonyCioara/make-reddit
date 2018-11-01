@@ -5,14 +5,18 @@ const Post = require('../models/post');
 
 // Show new form
 router.get('/new', (req, res) => {
-    res.render('posts-new');
+    const currentUser = req.user;
+
+    res.render('posts-new', {currentUser});
 });
 
 // Show post
 router.get('/:id', (req, res) => {
+    const currentUser = req.user;
+
     Post.findById(req.params.id).populate('comments')
     .then(post => {
-        res.render('posts-show', { post });
+        res.render('posts-show', { post, currentUser });
     })
     .catch(err => {
         console.log(err.message);
@@ -21,11 +25,15 @@ router.get('/:id', (req, res) => {
 
 // Post new post
 router.post('/new', (req, res) => {
-    const post = new Post(req.body);
+    if (req.user) {
+        const post = new Post(req.body);
 
-    post.save((err, post) => {
-        return res.redirect('/');
-    });
+        post.save((err, post) => {
+            return res.redirect('/');
+        });
+    } else {
+        res.status(401);
+    };
 });
 
 module.exports = router;
