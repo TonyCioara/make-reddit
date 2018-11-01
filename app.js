@@ -20,6 +20,7 @@ const postRouter = require('./controllers/posts.js');
 const subredditRouter = require('./controllers/subreddits.js');
 const commentRouter = require('./controllers/comments.js');
 const authRouter = require('./controllers/auth.js');
+const userRouter = require('./controllers/users.js');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -35,6 +36,7 @@ app.use('/posts', postRouter);
 app.use('/r', subredditRouter);
 app.use('/posts', commentRouter);
 app.use('/auth', authRouter);
+app.use('/users', userRouter);
 
 app.listen(PORT, function() {
     console.log('Express server listening on port: ', PORT);

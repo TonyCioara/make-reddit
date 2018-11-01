@@ -4,7 +4,6 @@ const checkAuth = (req, res, next) => {
     console.log('Checking authentication');
 
     if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-        console.log('got to A')
         req.user = null;
     } else {
         const token = req.cookies.nToken;

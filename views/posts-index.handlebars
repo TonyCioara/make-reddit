@@ -6,7 +6,7 @@
             <li class="list-group-item">
             <div class="lead"><a href="/posts/{{this._id}}" class="lead">{{this.title}}</a></div>
             <a href="{{this.url}}" target="_blank">{{this.url}}</a>
-            <div><small>{{this.author.username}}</small></div>
+            <div><a href="/users/{{this.author.username}}" class="lead"><small>{{this.author.username}}</small></a></div>
             <div class="text-right">
                 <a href="/r/{{this.subreddit}}">{{this.subreddit}}</a>
             </div>

@@ -16,6 +16,7 @@ router.get('/login', (req, res) => {
 })
 
 // Sign up
+// TODO: Make sure to not allow the same username twice
 router.post('/signup', (req, res) => {
     const user = new User(req.body);
 
@@ -66,7 +67,5 @@ router.get('/logout', (req, res) => {
     res.clearCookie('nToken');
     res.redirect('/');
 });
-
-
 
 module.exports = router;

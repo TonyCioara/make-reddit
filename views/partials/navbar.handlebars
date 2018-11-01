@@ -4,6 +4,8 @@
                 <a href="/" class="btn btn-outline-success">Home</a>
                 {{#if currentUser}}
                     <a href="/posts/new" class="btn btn-sm btn-outline-secondary">New Post</a>
+                    <a href="/users/{{currentUser.username}}" class="btn btn-sm btn-outline-secondary">Profile</a>
+                    
                 {{/if}}
             </form>
             
