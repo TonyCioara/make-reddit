@@ -6,7 +6,7 @@ const Post = require('../models/post');
 router.get('/', (req, res) => {
     const currentUser = req.user;
 
-    Post.find({})
+    Post.find({}).populate('author')
     .then(posts => {
         res.render("posts-index", { posts, currentUser });
     })
