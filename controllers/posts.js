@@ -8,8 +8,9 @@ router.get('/new', (req, res) => {
     res.render('posts-new');
 });
 
+// Show post
 router.get('/:id', (req, res) => {
-    Post.findById(req.params.id)
+    Post.findById(req.params.id).populate('comments')
     .then(post => {
         res.render('posts-show', { post });
     })
