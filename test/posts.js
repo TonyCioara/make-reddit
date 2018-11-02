@@ -2,6 +2,15 @@
 const Post = require('../models/post.js');
 
 describe('Posts', () => {
+    before(done => {
+        agent
+        .post("/login")
+        .send({ username: "testone", password: "password" })
+        .end(function(err, res) {
+          done();
+        });
+    });
+
     it('should create with valid attributes at POST /posts/new', done => {
 
         const post = { title: "post title", url: "https://www.google.com", summary: "post summary" };
@@ -21,7 +30,7 @@ describe('Posts', () => {
                     });
                   })
                   .catch(err => {
-                    return done(err);
+                      return done(err);
                   });
               });
           });
