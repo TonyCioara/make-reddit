@@ -14,13 +14,14 @@ require('./data/reddit-db');
 const app = express();
 
 const PORT = process.env.process || 3000;
- 
+
 const indexRouter = require('./controllers/index.js');
 const postRouter = require('./controllers/posts.js');
 const subredditRouter = require('./controllers/subreddits.js');
 const commentRouter = require('./controllers/comments.js');
 const authRouter = require('./controllers/auth.js');
 const userRouter = require('./controllers/users.js');
+const replyRouter = require('./controllers/replies.js');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -33,8 +34,9 @@ app.use(checkAuth);
 
 app.use('/', indexRouter);
 app.use('/posts', postRouter);
-app.use('/r', subredditRouter);
 app.use('/posts', commentRouter);
+app.use('/posts', replyRouter);
+app.use('/r', subredditRouter);
 app.use('/auth', authRouter);
 app.use('/users', userRouter);
 

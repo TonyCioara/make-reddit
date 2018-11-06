@@ -10,6 +10,7 @@ router.post('/:postId/comments', (req, res) => {
     if (req.user) {
         const comment = new Comment(req.body);
         comment.author = req.user._id;
+        comment.post = req.params.postId;
 
         comment.save()
         .then(comment => {
@@ -28,6 +29,7 @@ router.post('/:postId/comments', (req, res) => {
             return post.save()
         })
         .then(post => {
+            console.log('GOT TO REDIRECT')
             res.redirect('/posts/' + post._id);
         })
         .catch(err => {

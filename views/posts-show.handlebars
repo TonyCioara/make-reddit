@@ -10,11 +10,23 @@
         <button type="submit">Save</button>
       </div>
     </form>
-    {{#each post.comments}}
-      <div><a href="/users/{{this.author.username}}" class="lead"><small>{{this.author.username}}</small></a></div>
-      <p>{{this.content}}</p>
-      
-    {{/each}}
+
+    <ul>
+      {{#each post.comments}}
+        <li class="list-group-item">
+          <div><a href="/users/{{this.author.username}}" class="lead"><small>{{this.author.username}}</small></a></div>
+          <p>{{this.content}}</p>
+          <a href="/posts/{{this.post}}/comments/{{this._id}}/replies/new">Reply</a>
+          <ul>
+            {{#each this.replies}}
+              <li>
+                <p>{{this.content}}</p>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+    
   </div>
-  
 </div>
