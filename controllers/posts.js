@@ -51,10 +51,10 @@ router.post('/new', (req, res) => {
 });
 
 // Upvote
-router.put(':id/vote-up', (req, res) => {
+router.put('/:id/vote-up', (req, res) => {
     console.log('VOTING UP');
     Post.findById(req.params.id)
-    exec(function(err, post) {
+    .exec(function(err, post) {
         post.voteScore += 1;
         post.save();
         res.status(200);
@@ -62,10 +62,10 @@ router.put(':id/vote-up', (req, res) => {
 });
 
 // Downvote
-router.put(':id/vote-down', (req, res) => {
+router.put('/:id/vote-down', (req, res) => {
     console.log('VOTING DOWN');
     Post.findById(req.params.id)
-    exec(function(err, post) {
+    .exec(function(err, post) {
         post.voteScore -= 1;
         post.save();
         res.status(200);

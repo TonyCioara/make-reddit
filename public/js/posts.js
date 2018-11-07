@@ -1,13 +1,12 @@
 $(document).ready(function() {
     $(".vote-up").submit(function(e) {
         e.preventDefault();
-
         var postId = $(this).data("id");
         $.ajax({
             type: "PUT",
             url: "posts/" + postId + "/vote-up",
             success: function(data) {
-                console.log("voted up!");
+                console.log('DATA', data);
             },
             error: function(err) {
                 console.log(err.message);
@@ -17,7 +16,6 @@ $(document).ready(function() {
 
     $(".vote-down").submit(function(e) {
         e.preventDefault();
-
         var postId = $(this).data("id");
         $.ajax({
             type: "PUT",

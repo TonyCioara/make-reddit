@@ -10,10 +10,13 @@
                 <div class="text-right">
                     <a href="/r/{{this.subreddit}}">{{this.subreddit}}</a>
                 </div>
-                <form class="vote-up" data-id="{{post._id}}">
+                <div id="score">
+                    <h6>Score: {{this.voteScore}}</h6>
+                </div>
+                <form class="vote-up" data-id="{{this._id}}">
                     <button type="submit">Vote Up</button>
                 </form>
-                <form class="vote-down" data-id="{{post._id}}">
+                <form class="vote-down" data-id="{{this._id}}">
                     <button type="submit">Vote Down</button>
                 </form>
             </li>
